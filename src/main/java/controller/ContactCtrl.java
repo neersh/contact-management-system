@@ -2,6 +2,7 @@ package controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import dto.ContactDTO;
+import dto.SearchContactsCriteria;
 import entity.Contact;
 import exception.IdNotFoundException;
 import lombok.extern.slf4j.Slf4j;
@@ -23,10 +24,9 @@ The controller includes the following endpoints:
         GET /contacts/search:Searches contacts based on provided parameters (keyword, firstName, lastName, email).
 */
 
-
 @RestController
+@RequestMapping(value = "/contacts")
 @Slf4j
-@RequestMapping(name = "/contacts")
 public class ContactCtrl {
     private final ModelMapper modelMapper;
 
@@ -119,6 +119,15 @@ public class ContactCtrl {
             contacts = contactService.getAllContacts();
         }
         return ResponseEntity.ok(contacts);
+    }
+
+    // for dynamic query
+    // if all parameter are send by user like - fistName,lastName,email,phoneNumber
+    @GetMapping(value = "/dynamic_search")
+    public List<Contact> search(@ModelAttribute SearchContactsCriteria searchContactsCriteria) {
+        return contactService.search(searchContactsCriteria);
+
+
     }
 
 

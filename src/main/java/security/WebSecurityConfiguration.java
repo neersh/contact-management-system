@@ -1,3 +1,4 @@
+/*
 package security;
 
 import org.springframework.context.annotation.Configuration;
@@ -27,3 +28,4 @@ public class WebSecurityConfiguration extends AbstractSecurityWebApplicationInit
                 .httpBasic();
     }
 }
+*/

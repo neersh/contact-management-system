@@ -1,5 +1,6 @@
 package service;
 
+import dto.SearchContactsCriteria;
 import entity.Contact;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -25,4 +26,6 @@ public interface ContactService {
     List<Contact> searchContactsByLastName(String lastName);
 
     List<Contact> searchContactsByEmail(String email);
+
+    List<Contact> search(SearchContactsCriteria searchContactsCriteria);
 }

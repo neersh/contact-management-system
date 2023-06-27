@@ -1,5 +1,6 @@
 package repository;
 
+import dto.SearchContactsCriteria;
 import entity.Contact;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -18,4 +19,6 @@ public interface ContactRepo extends JpaRepository<Contact, Long> {
     List<Contact> findByLastNameContainingIgnoreCase(String lastName);
 
     List<Contact> findByEmailContainingIgnoreCase(String email);
+
+    List<Contact> search(SearchContactsCriteria searchContacts);
 }
